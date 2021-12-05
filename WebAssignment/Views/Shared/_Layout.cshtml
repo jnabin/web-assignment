@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Web Assingment</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg py-3 navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="/Home/Index">Web Assingment</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/Home/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/About/Index">About</a>
+                        </li>
+                        @if (Session["UserName"] != null)
+                        {
+
+                            <li class="nav-item dropdown ms-3 align-self-md-center">
+                                <a class="nav-link dropdown-toggle pe-0" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @Session["UserName"]<img class="pb-1 ms-1" style="display:inline-block; width:28px;height:28px" src="~/Images/user.png" alt="dashboard" />
+                                </a>
+                                <ul class="dropdown-menu mt-4 p-2" aria-labelledby="navbarDropdown2">
+                                    <li>
+                                        <a class="dropdown-hover dropdown-item p-2" href="/Account/Logout">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
+                        else
+                        {
+                            <li class="nav-item ms-3 align-self-center">
+                                <a class="text-capitalize text-center nav-link signin-nav-link px-4 py-1 rounded-pill" href="/Account/Login" tabindex="-1" aria-disabled="true">sign in</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            @RenderBody()
+        </div>      
+    </main>
+    <footer>
+        <div class="container">
+            <p class="text-center">This is footer</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
